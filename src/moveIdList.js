@@ -27,10 +27,48 @@ export const movieTitleIdList = [
     movieTitle: "Princess Mononoke",
     id: "128",
   },
+  {
+    movieTitle: "Ponyo",
+    id: "12429",
+  },
+  {
+    movieTitle: "Your Name.",
+    id: "372058",
+  },
+  {
+    movieTitle: "Neon Genesis Evangelion: The End of Evangelion",
+    id: "18491",
+  },
+  {
+    movieTitle: "Cowboy Bebop: The Movie",
+    id: "11299",
+  },
+  {
+    movieTitle: "Jin-Roh: The Wolf Brigade",
+    id: "823",
+  },
+  {
+    movieTitle: "The Boy and the Beast",
+    id: "315465",
+  },
+  {
+    movieTitle: "Steamboy",
+    id: "8953",
+  },
+  {
+    movieTitle: "Kiki's Delivery Service",
+    id: "16859",
+  },
+  {
+    movieTitle: "Vampire Hunter D: Bloodlust",
+    id: "15999",
+  },
+  {
+    movieTitle: "Memories",
+    id: "42994",
+  },
+  {
+    movieTitle: "Fullmetal Alchemist",
+    id: "426285",
+  },
 ];
-
-// movie title and their corresponding id
-// spirited away - 129
-// akira - 149
-// howls moving castle - 1020896
-//
