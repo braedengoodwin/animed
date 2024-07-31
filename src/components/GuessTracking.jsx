@@ -12,8 +12,8 @@ const GuessTracking = ({ guesses, maxGuesses, gameState, movieTitle }) => {
   };
 
   return (
-    <div className="flex flex-col items-center"> {/* Center content vertically */}
-      <div className="flex justify-center space-x-2 mb-4"> {/* Center boxes horizontally and add bottom margin */}
+    <div className="flex flex-col items-center">
+      <div className="flex justify-center space-x-2 mb-4"> 
         {[...Array(maxGuesses)].map((_, index) => (
           <RiCheckboxBlankFill
             key={index}

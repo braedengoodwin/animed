@@ -14,11 +14,10 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [handleClickBool, setHandleClickBool] = useState(false);
 
-  const [gameState, setGameState] = useState('playing')
-  const [guesses, setGuesses] = useState([])
-  const maxGuesses = 5
+  const [gameState, setGameState] = useState("playing");
+  const [guesses, setGuesses] = useState([]);
+  const maxGuesses = 5;
 
- 
   // this is just a function that when called will get a random number from the array of objs
   const randomMovieId = (array) => {
     return array[Math.floor(Math.random() * array.length)];
@@ -39,7 +38,6 @@ function App() {
   });
 
   const movieTitle = search[0].movieTitle;
-
 
   // when called this function will generate random id, clear the search results
   const generateNewRandomId = () => {
@@ -86,43 +84,23 @@ function App() {
     }
   }, [movieTitleSearch, debouncedSearch]);
 
-  // const nextImage = () => {
-  //   if (movieImages && movieImages.backdrops) {
-  //     setCurrentImageIndex(
-  //       (prevIndex) => (prevIndex + 1) % movieImages.backdrops.length
-  //     );
-  //   }
-  // };
-
-  // const prevImage = () => {
-  //   if (movieImages && movieImages.backdrops) {
-  //     setCurrentImageIndex(
-  //       (prevIndex) =>
-  //         (prevIndex - 1 + movieImages.backdrops.length) %
-  //         movieImages.backdrops.length
-  //     );
-  //   }
-  // };
-
-
+  // this function is just check if the user guessed correctly or not
   const checkGuess = (guess) => {
     const movieTitle = search[0].movieTitle.toLowerCase();
     const isCorrect = guess.toLowerCase() === movieTitle;
-    
+
     const newGuess = { text: guess, correct: isCorrect };
     const newGuesses = [...guesses, newGuess];
     setGuesses(newGuesses);
-    
+
     if (isCorrect) {
-      setGameState('won');
+      setGameState("won");
     } else if (newGuesses.length >= maxGuesses) {
-      setGameState('lost');
+      setGameState("lost");
     }
-    
+
     return isCorrect;
   };
-
-
 
   // this is handling the user pressing enter
   const handleEnter = (value) => {
@@ -132,23 +110,22 @@ function App() {
     // console.log("pressing enter");
     // console.log("this is movie title: " + search[0].movieTitle);
 
-    if(gameState !== 'playing') return;
+    if (gameState !== "playing") return;
 
     if (movieImages && movieImages.backdrops) {
       setCurrentImageIndex(
         (prevIndex) => (prevIndex + 1) % movieImages.backdrops.length
       );
     }
-    
-    checkGuess(value)
-    setFetchedMovieTitle([])
-    setMovieTitleSearch("")
-  
+
+    checkGuess(value);
+    setFetchedMovieTitle([]);
+    setMovieTitleSearch("");
   };
 
   // this is handling the user clicking the movie from the list
   const handleSearchResultClick = (title) => {
-    if (gameState !== 'playing') return;
+    if (gameState !== "playing") return;
 
     if (movieImages && movieImages.backdrops) {
       setCurrentImageIndex(
@@ -156,20 +133,19 @@ function App() {
       );
     }
 
-    checkGuess(title)
-    setMovieTitleSearch(title)
-    setHandleClickBool(true)
-    setFetchedMovieTitle([])
+    checkGuess(title);
+    setMovieTitleSearch(title);
+    setHandleClickBool(true);
+    setFetchedMovieTitle([]);
   };
 
-  const resetGame =() => {
-    setGameState('playing')
-    setGuesses([])
-    generateNewRandomId()
-    setCurrentImageIndex(0)
-  }
-
-  ///////////////////////////////////////////
+  // resets game
+  const resetGame = () => {
+    setGameState("playing");
+    setGuesses([]);
+    generateNewRandomId();
+    setCurrentImageIndex(0);
+  };
 
 
   return (
@@ -193,7 +169,6 @@ function App() {
               />
             </div>
             <div className="p-4">
-              
               <p className="text-center text-gray-600">
                 Image {currentImageIndex + 1} of {movieImages.backdrops.length}
               </p>
@@ -204,11 +179,15 @@ function App() {
         )}
 
         <div className="mt-8 w-full">
-          <GuessTracking guesses={guesses} maxGuesses={maxGuesses} gameState={gameState} movieTitle={movieTitle}/>
-          
+          <GuessTracking
+            guesses={guesses}
+            maxGuesses={maxGuesses}
+            gameState={gameState}
+            movieTitle={movieTitle}
+          />
         </div>
 
-        {gameState === 'playing' && (
+        {gameState === "playing" && (
           <div className="mt-8">
             <input
               type="text"
@@ -247,7 +226,7 @@ function App() {
             onClick={resetGame}
             className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-full"
           >
-            {gameState === 'playing' ? 'New Random Movie' : 'Play Again'}
+            {gameState === "playing" ? "New Random Movie" : "Play Again"}
           </button>
         </div>
       </div>
